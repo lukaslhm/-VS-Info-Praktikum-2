@@ -42,8 +42,42 @@ void vAufgabe_1()
 	std::cout << std::endl << "Finish function" << std::endl;
 } // destruction of everything else
 
+void vAufgabe_1a()
+{
+	std::vector<std::unique_ptr<Fahrzeug>> vec;
+	auto p = std::make_unique<Fahrzeug>("Auto1", 30);
+	vec.push_back(move(p));
+	p = std::make_unique<Fahrzeug>("Auto2", 50);
+	vec.push_back(move(p));
+	p = std::make_unique<Fahrzeug>("Auto3", 70);
+	vec.push_back(move(p));
+
+	double takt = 0.125;
+
+	for (int i = 0; i < 16; i++)
+	{
+		dGlobaleUhr += takt;
+		Fahrzeug::vKopf();
+		for (auto it = vec.begin(); it != vec.end(); it++)
+		{
+			it->get()->vSimulieren();
+			it->get()->vAusgeben();
+			std::cout << std::endl;
+		}
+		std::cout << std::endl;
+	}
+
+	std::cout << std::endl << "Finishing up!" << std::endl;
+	Fahrzeug::vKopf();
+	for (auto it = vec.begin(); it != vec.end(); it++)
+	{
+		it->get()->vAusgeben();
+		std::cout << std::endl;
+	}
+}
+
 int main()
 {
-	vAufgabe_1();
+	vAufgabe_1a();
 	return 0;
 }
