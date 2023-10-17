@@ -55,7 +55,7 @@ void Fahrzeug::vKopf()
 	std::cout << std::setw(oldWidth) << std::setfill(oldFill);
 }
 
-void Fahrzeug::vAusgeben()
+void Fahrzeug::vAusgeben() const
 {
 	auto oldWidth = std::cout.width();
 	auto oldPrec = std::cout.precision();

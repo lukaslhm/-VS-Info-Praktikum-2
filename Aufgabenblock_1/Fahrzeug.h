@@ -21,18 +21,20 @@ public:
 	virtual ~Fahrzeug();
 
 	static void vKopf();
-	void vAusgeben();
+	void vAusgeben() const;
 
-	void vSimulieren();
+	virtual void vSimulieren();
 
+protected:
+	const double p_dMaxGeschwindigkeit;
+	double p_dZeit;
 
 private:
-	std::string p_sName;
+	const std::string p_sName;
 	const int p_iID;
 	static int p_iIDCnt;
-	double p_dMaxGeschwindigkeit;
 	double p_dGesamtStrecke;
 	double p_dGesamtZeit;
-	double p_dZeit;
+	
 
 };

@@ -18,12 +18,24 @@
     <ClInclude Include="Fahrzeug.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="PKW.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Fahrrad.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Fahrzeug.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="PKW.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Fahrrad.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
