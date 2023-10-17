@@ -3,6 +3,8 @@
 
 #include "Fahrzeug.h"
 
+double dGlobaleUhr = 0;
+
 void vAufgabe_1()
 {
 	Fahrzeug F1;

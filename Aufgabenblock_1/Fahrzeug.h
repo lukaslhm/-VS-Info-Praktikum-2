@@ -8,9 +8,10 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <limits>
 
-#ifndef FAHRZEUG_H_
-#define FAHRZEUG_H_
+extern double dGlobaleUhr;
 
 class Fahrzeug {
 public:
@@ -19,15 +20,19 @@ public:
 	Fahrzeug(std::string initName, double initMaxVelo);
 	virtual ~Fahrzeug();
 
+	static void vKopf();
+	void vAusgeben();
+
+	void vSimulieren();
+
 
 private:
 	std::string p_sName;
 	const int p_iID;
 	static int p_iIDCnt;
 	double p_dMaxGeschwindigkeit;
+	double p_dGesamtStrecke;
 	double p_dGesamtZeit;
 	double p_dZeit;
 
 };
-
-#endif /* FAHRZEUG_H_ */
