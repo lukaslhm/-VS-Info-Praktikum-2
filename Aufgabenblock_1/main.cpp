@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "Fahrzeug.h"
+#include "PKW.h"
 
 double dGlobaleUhr = 0;
 
@@ -45,12 +46,9 @@ void vAufgabe_1()
 void vAufgabe_1a()
 {
 	std::vector<std::unique_ptr<Fahrzeug>> vec;
-	auto p = std::make_unique<Fahrzeug>("Auto1", 30);
-	vec.push_back(move(p));
-	p = std::make_unique<Fahrzeug>("Auto2", 50);
-	vec.push_back(move(p));
-	p = std::make_unique<Fahrzeug>("Auto3", 70);
-	vec.push_back(move(p));
+	vec.push_back(move(std::make_unique<PKW>("Auto1", 30, 8.9)));
+	vec.push_back(move(std::make_unique<Fahrzeug>("Auto2", 50)));
+	vec.push_back(move(std::make_unique<Fahrzeug>("Auto3", 70)));
 
 	double takt = 0.125;
 

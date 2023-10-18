@@ -47,8 +47,12 @@ void Fahrzeug::vKopf()
 	std::cout << std::setw(18) << "MaxGeschwindigkeit";
 	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(13) << "GesamtStrecke";
+	std::cout << std::setw(1) << ' ';
+	std::cout << std::setw(15) << "GesamtVerbrauch";
+	std::cout << std::setw(1) << ' ';
+	std::cout << std::setw(10) << "Tankinhalt";
 	std::cout << std::endl;
-	std::cout << std::setfill('-') << std::setw(41) << '-';
+	std::cout << std::setfill('-') << std::setw(41 + 27) << '-';
 	std::cout << std::endl;
 
 	std::cout << std::resetiosflags(std::ios::left);
@@ -78,6 +82,11 @@ void Fahrzeug::vSimulieren()
 	p_dZeit = dGlobaleUhr;
 	p_dGesamtZeit += dt;
 	p_dGesamtStrecke += p_dMaxGeschwindigkeit * dt;
+}
+
+double Fahrzeug::dTanken(double dMenge)
+{
+	return 0.0;
 }
 
 

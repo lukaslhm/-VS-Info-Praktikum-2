@@ -21,20 +21,21 @@ public:
 	virtual ~Fahrzeug();
 
 	static void vKopf();
-	void vAusgeben() const;
+	virtual void vAusgeben() const;
 
 	virtual void vSimulieren();
+
+	virtual double dTanken(double dMenge = std::numeric_limits<double>::infinity());
 
 protected:
 	const double p_dMaxGeschwindigkeit;
 	double p_dZeit;
+	double p_dGesamtStrecke;
+	double p_dGesamtZeit;
 
 private:
 	const std::string p_sName;
 	const int p_iID;
 	static int p_iIDCnt;
-	double p_dGesamtStrecke;
-	double p_dGesamtZeit;
-	
 
 };
