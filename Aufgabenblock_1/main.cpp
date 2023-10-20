@@ -3,6 +3,7 @@
 
 #include "Fahrzeug.h"
 #include "PKW.h"
+#include "Fahrrad.h"
 
 double dGlobaleUhr = 0;
 
@@ -46,9 +47,10 @@ void vAufgabe_1()
 void vAufgabe_1a()
 {
 	std::vector<std::unique_ptr<Fahrzeug>> vec;
-	vec.push_back(move(std::make_unique<PKW>("Auto1", 30, 8.9)));
+	vec.push_back(move(std::make_unique<PKW>("PKW1", 30, 8.9)));
 	vec.push_back(move(std::make_unique<Fahrzeug>("Auto2", 50)));
 	vec.push_back(move(std::make_unique<Fahrzeug>("Auto3", 70)));
+	vec.push_back(move(std::make_unique<Fahrrad>("Rad1", 20)));
 
 	double takt = 0.125;
 
@@ -74,8 +76,53 @@ void vAufgabe_1a()
 	}
 }
 
+void vAufgabe_2()
+{
+	std::vector<std::unique_ptr<Fahrzeug>> vec;
+	vec.push_back(move(std::make_unique<PKW>("PKW1", 30, 8.9)));
+	vec.push_back(move(std::make_unique<PKW>("PKW2", 50, 7)));
+	vec.push_back(move(std::make_unique<Fahrrad>("Rad1", 20)));
+	vec.push_back(move(std::make_unique<Fahrrad>("Rad2", 25)));
+
+	double takt = 0.01;
+
+	bool getankt = false;
+
+	for (int i = 0; i < 6/takt; i++)
+	{
+		dGlobaleUhr += takt;
+
+		for (auto it = vec.begin(); it != vec.end(); it++)
+		{
+			it->get()->vSimulieren();
+		}
+
+		if (dGlobaleUhr > 3 and !(getankt))
+		{
+			getankt = true;
+
+			for (auto it = vec.begin(); it != vec.end(); it++)
+			{
+				it->get()->dTanken();
+			}
+		}
+
+		if (!(i%50))
+		{
+			std::cout << "Time: " << dGlobaleUhr << std::endl;
+			Fahrzeug::vKopf();
+			for (auto it = vec.begin(); it != vec.end(); it++)
+			{
+				it->get()->vAusgeben();
+				std::cout << std::endl;
+			}
+			std::cout << std::endl;
+		}
+	}
+}
+
 int main()
 {
-	vAufgabe_1a();
+	vAufgabe_2();
 	return 0;
 }

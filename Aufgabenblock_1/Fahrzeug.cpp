@@ -16,12 +16,6 @@ Fahrzeug::Fahrzeug()
 
 }
 
-Fahrzeug::Fahrzeug(std::string initName)
-	: p_sName(initName), p_iID(p_iIDCnt++), p_dMaxGeschwindigkeit(0), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
-{
-	std::cout << "New Fahrzeug generated: " << p_sName << " - " << p_iID << std::endl;
-}
-
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
 	: p_sName(initName), p_iID(p_iIDCnt++), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
 {
@@ -48,11 +42,13 @@ void Fahrzeug::vKopf()
 	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(13) << "GesamtStrecke";
 	std::cout << std::setw(1) << ' ';
+	std::cout << std::setw(15) << "Geschwindigkeit";
+	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(15) << "GesamtVerbrauch";
 	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(10) << "Tankinhalt";
 	std::cout << std::endl;
-	std::cout << std::setfill('-') << std::setw(41 + 27) << '-';
+	std::cout << std::setfill('-') << std::setw(41 + 27 + 16) << '-';
 	std::cout << std::endl;
 
 	std::cout << std::resetiosflags(std::ios::left);
@@ -71,6 +67,8 @@ void Fahrzeug::vAusgeben() const
 	std::cout << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
 	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(13) << p_dGesamtStrecke << std::resetiosflags(std::ios::fixed);
+	std::cout << std::setw(1) << ' ';
+	std::cout << std::setw(15) << dGeschwindigkeit();
 
 	std::cout << std::setw(oldWidth) << std::setprecision(oldPrec);
 }
@@ -81,12 +79,17 @@ void Fahrzeug::vSimulieren()
 	if (abs(dt) < 3 * std::numeric_limits<double>::min()) { std::cout << "Fahrzeug doppelt simuliert: (" << p_sName << ', ' << p_iID << ')' << std::endl; return; }
 	p_dZeit = dGlobaleUhr;
 	p_dGesamtZeit += dt;
-	p_dGesamtStrecke += p_dMaxGeschwindigkeit * dt;
+	p_dGesamtStrecke += dGeschwindigkeit() * dt;
 }
 
 double Fahrzeug::dTanken(double dMenge)
 {
 	return 0.0;
+}
+
+double Fahrzeug::dGeschwindigkeit() const
+{
+	return p_dMaxGeschwindigkeit;
 }
 
 

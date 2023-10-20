@@ -16,8 +16,7 @@ extern double dGlobaleUhr;
 class Fahrzeug {
 public:
 	Fahrzeug();
-	Fahrzeug(std::string initName);
-	Fahrzeug(std::string initName, double initMaxVelo);
+	Fahrzeug(std::string initName, double initMaxVelo = 0);
 	virtual ~Fahrzeug();
 
 	static void vKopf();
@@ -26,6 +25,8 @@ public:
 	virtual void vSimulieren();
 
 	virtual double dTanken(double dMenge = std::numeric_limits<double>::infinity());
+
+	virtual double dGeschwindigkeit() const;
 
 protected:
 	const double p_dMaxGeschwindigkeit;
