@@ -12,5 +12,7 @@ public:
 	~Fahrrad();
 
 	double dGeschwindigkeit() const override;
+
+	void vAusgeben(std::ostream& out) const override;
 };
 

@@ -17,10 +17,11 @@ class Fahrzeug {
 public:
 	Fahrzeug();
 	Fahrzeug(std::string initName, double initMaxVelo = 0);
+	Fahrzeug(const Fahrzeug&) = delete;
 	virtual ~Fahrzeug();
 
 	static void vKopf();
-	virtual void vAusgeben() const;
+	virtual void vAusgeben(std::ostream& out) const;
 
 	virtual void vSimulieren();
 
@@ -28,15 +29,22 @@ public:
 
 	virtual double dGeschwindigkeit() const;
 
+	double getGesamtStrecke() const;
+
+	bool operator<(const Fahrzeug& oprnd);
+	Fahrzeug& operator=(const Fahrzeug& oprnd);
+
 protected:
-	const double p_dMaxGeschwindigkeit;
+	double p_dMaxGeschwindigkeit;
 	double p_dZeit;
 	double p_dGesamtStrecke;
 	double p_dGesamtZeit;
 
 private:
-	const std::string p_sName;
+	std::string p_sName;
 	const int p_iID;
 	static int p_iIDCnt;
 
 };
+
+std::ostream& operator<<(std::ostream& out, const Fahrzeug& inst);

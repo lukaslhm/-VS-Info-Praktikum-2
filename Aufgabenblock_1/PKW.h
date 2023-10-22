@@ -14,7 +14,7 @@ public:
 
 	void vSimulieren() override;
 
-	void vAusgeben() const override;
+	void vAusgeben(std::ostream& out) const override;
 
 private:
 	double p_dVerbrauch;

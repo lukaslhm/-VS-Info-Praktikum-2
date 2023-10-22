@@ -39,11 +39,11 @@ void PKW::vSimulieren()
 	}
 }
 
-void PKW::vAusgeben() const
+void PKW::vAusgeben(std::ostream& out) const
 {
-	Fahrzeug::vAusgeben();
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(15) << p_dGesamtStrecke * p_dVerbrauch / 100;
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(10) << p_dTankinhalt;
+	Fahrzeug::vAusgeben(out);
+	out << std::setw(1) << ' ';
+	out << std::setw(15) << p_dGesamtStrecke * p_dVerbrauch / 100;
+	out << std::setw(1) << ' ';
+	out << std::setw(10) << p_dTankinhalt;
 }

@@ -55,22 +55,22 @@ void Fahrzeug::vKopf()
 	std::cout << std::setw(oldWidth) << std::setfill(oldFill);
 }
 
-void Fahrzeug::vAusgeben() const
+void Fahrzeug::vAusgeben(std::ostream& out) const
 {
-	auto oldWidth = std::cout.width();
-	auto oldPrec = std::cout.precision();
+	auto oldWidth = out.width();
+	auto oldPrec = out.precision();
 
-	std::cout << std::setw(2) << p_iID;
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(5) << std::setiosflags(std::ios::left) << p_sName << std::resetiosflags(std::ios::left);
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(13) << p_dGesamtStrecke << std::resetiosflags(std::ios::fixed);
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(15) << dGeschwindigkeit();
+	out << std::setw(2) << p_iID;
+	out << std::setw(1) << ' ';
+	out << std::setw(5) << std::setiosflags(std::ios::left) << p_sName << std::resetiosflags(std::ios::left);
+	out << std::setw(1) << ' ';
+	out << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
+	out << std::setw(1) << ' ';
+	out << std::setw(13) << p_dGesamtStrecke << std::resetiosflags(std::ios::fixed);
+	out << std::setw(1) << ' ';
+	out << std::setw(15) << dGeschwindigkeit();
 
-	std::cout << std::setw(oldWidth) << std::setprecision(oldPrec);
+	out << std::setw(oldWidth) << std::setprecision(oldPrec);
 }
 
 void Fahrzeug::vSimulieren()
@@ -92,4 +92,26 @@ double Fahrzeug::dGeschwindigkeit() const
 	return p_dMaxGeschwindigkeit;
 }
 
+double Fahrzeug::getGesamtStrecke() const
+{
+	return p_dGesamtStrecke;
+}
 
+bool Fahrzeug::operator<(const Fahrzeug& oprnd)
+{
+	return p_dGesamtStrecke < oprnd.getGesamtStrecke();
+}
+
+Fahrzeug& Fahrzeug::operator=(const Fahrzeug& oprnd)
+{
+	if (this == &oprnd) return *this;
+	p_sName = oprnd.p_sName;
+	p_dMaxGeschwindigkeit = oprnd.p_dMaxGeschwindigkeit;
+	return *this;
+}
+
+std::ostream& operator<<(std::ostream& out, const Fahrzeug& inst)
+{
+	inst.vAusgeben(out);
+	return out;
+}

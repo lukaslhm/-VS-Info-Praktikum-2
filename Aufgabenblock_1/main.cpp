@@ -61,7 +61,7 @@ void vAufgabe_1a()
 		for (auto it = vec.begin(); it != vec.end(); it++)
 		{
 			it->get()->vSimulieren();
-			it->get()->vAusgeben();
+			it->get()->vAusgeben(std::cout);
 			std::cout << std::endl;
 		}
 		std::cout << std::endl;
@@ -71,7 +71,7 @@ void vAufgabe_1a()
 	Fahrzeug::vKopf();
 	for (auto it = vec.begin(); it != vec.end(); it++)
 	{
-		it->get()->vAusgeben();
+		it->get()->vAusgeben(std::cout);
 		std::cout << std::endl;
 	}
 }
@@ -113,7 +113,7 @@ void vAufgabe_2()
 			Fahrzeug::vKopf();
 			for (auto it = vec.begin(); it != vec.end(); it++)
 			{
-				it->get()->vAusgeben();
+				it->get()->vAusgeben(std::cout);
 				std::cout << std::endl;
 			}
 			std::cout << std::endl;
@@ -121,8 +121,46 @@ void vAufgabe_2()
 	}
 }
 
+void vAufgabe_3()
+{
+	std::vector<std::unique_ptr<Fahrzeug>> vec;
+	vec.push_back(move(std::make_unique<PKW>("PKW1", 30, 8.9)));
+	vec.push_back(move(std::make_unique<PKW>("PKW2", 50, 7)));
+	vec.push_back(move(std::make_unique<Fahrrad>("Rad1", 20)));
+	vec.push_back(move(std::make_unique<Fahrrad>("Rad2", 25)));
+
+	dGlobaleUhr += 1;
+
+	std::cout << std::endl;
+
+	for (auto it = vec.begin(); it != vec.end(); it++)
+	{
+		it->get()->vSimulieren();
+	}
+
+	Fahrzeug::vKopf();
+	for (auto it = vec.begin(); it != vec.end(); it++)
+	{
+		std::cout << *it->get() << std::endl;
+	}
+	
+	std::cout << std::endl;
+	std::cout << "PKW1 < PKW2: " << (vec.at(0) < vec.at(1)) << std::endl;
+	std::cout << "PKW2 < PKW1: " << (vec.at(1) < vec.at(0)) << std::endl << std::endl;
+
+	std::cout << "PKW1 = PKW2" << std::endl;
+	*vec.at(0).get() = *vec.at(1).get();
+
+	Fahrzeug::vKopf();
+	for (auto it = vec.begin(); it != vec.end(); it++)
+	{
+		std::cout << *it->get() << std::endl;
+	}
+	std::cout << std::endl << "FINISH!" << std::endl << std::endl;
+}
+
 int main()
 {
-	vAufgabe_2();
+	vAufgabe_3();
 	return 0;
 }

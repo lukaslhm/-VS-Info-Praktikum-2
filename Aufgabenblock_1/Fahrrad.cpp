@@ -23,4 +23,9 @@ double Fahrrad::dGeschwindigkeit() const
 	else return result;
 }
 
+void Fahrrad::vAusgeben(std::ostream& out) const
+{
+	Fahrzeug::vAusgeben(out);
+}
+
 
