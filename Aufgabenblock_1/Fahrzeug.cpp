@@ -7,17 +7,17 @@
 
 #include "Fahrzeug.h"
 
-int Fahrzeug::p_iIDCnt = 0;
+int Fahrzeug::p_iMaxID = 0;
 
 Fahrzeug::Fahrzeug()
-	: p_sName(""), p_iID(p_iIDCnt++), p_dMaxGeschwindigkeit(0), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
+	: p_sName(""), p_iID(p_iMaxID++), p_dMaxGeschwindigkeit(0), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
 {
 	std::cout << "New Fahrzeug generated: " << p_sName << " - " << p_iID << std::endl;
 
 }
 
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
-	: p_sName(initName), p_iID(p_iIDCnt++), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
+	: p_sName(initName), p_iID(p_iMaxID++), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
 {
 	std::cout << "New Fahrzeug generated: " << p_sName << " - " << p_iID << std::endl;
 }

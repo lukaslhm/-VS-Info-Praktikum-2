@@ -43,7 +43,7 @@ protected:
 private:
 	std::string p_sName;
 	const int p_iID;
-	static int p_iIDCnt;
+	static int p_iMaxID;
 
 };
 
