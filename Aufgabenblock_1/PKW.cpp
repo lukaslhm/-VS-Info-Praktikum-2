@@ -35,8 +35,9 @@ void PKW::vSimulieren()
 	}
 	else
 	{
-		p_dZeit = dGlobaleUhr;
+		p_dZeit = dGlobaleZeit;
 	}
+	if (p_dTankinhalt < 0) p_dTankinhalt = 0;
 }
 
 void PKW::vAusgeben(std::ostream& out) const

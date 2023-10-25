@@ -75,9 +75,9 @@ void Fahrzeug::vAusgeben(std::ostream& out) const
 
 void Fahrzeug::vSimulieren()
 {
-	double dt = dGlobaleUhr - p_dZeit;
+	double dt = dGlobaleZeit - p_dZeit;
 	if (abs(dt) < 3 * std::numeric_limits<double>::min()) { std::cout << "Fahrzeug doppelt simuliert: (" << p_sName << ', ' << p_iID << ')' << std::endl; return; }
-	p_dZeit = dGlobaleUhr;
+	p_dZeit = dGlobaleZeit;
 	p_dGesamtZeit += dt;
 	p_dGesamtStrecke += dGeschwindigkeit() * dt;
 }

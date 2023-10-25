@@ -11,7 +11,7 @@
 #include <iomanip>
 #include <limits>
 
-extern double dGlobaleUhr;
+extern double dGlobaleZeit;
 
 class Fahrzeug {
 public:

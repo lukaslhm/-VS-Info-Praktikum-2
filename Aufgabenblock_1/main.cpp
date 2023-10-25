@@ -5,7 +5,7 @@
 #include "PKW.h"
 #include "Fahrrad.h"
 
-double dGlobaleUhr = 0;
+double dGlobaleZeit = 0;
 
 void vAufgabe_1()
 {
@@ -56,7 +56,7 @@ void vAufgabe_1a()
 
 	for (int i = 0; i < 16; i++)
 	{
-		dGlobaleUhr += takt;
+		dGlobaleZeit += takt;
 		Fahrzeug::vKopf();
 		for (auto it = vec.begin(); it != vec.end(); it++)
 		{
@@ -90,14 +90,14 @@ void vAufgabe_2()
 
 	for (int i = 0; i < 6/takt; i++)
 	{
-		dGlobaleUhr += takt;
+		dGlobaleZeit += takt;
 
 		for (auto it = vec.begin(); it != vec.end(); it++)
 		{
 			it->get()->vSimulieren();
 		}
 
-		if (dGlobaleUhr > 3 and !(getankt))
+		if (dGlobaleZeit > 3 and !(getankt))
 		{
 			getankt = true;
 
@@ -109,7 +109,7 @@ void vAufgabe_2()
 
 		if (!(i%50))
 		{
-			std::cout << "Time: " << dGlobaleUhr << std::endl;
+			std::cout << "Time: " << dGlobaleZeit << std::endl;
 			Fahrzeug::vKopf();
 			for (auto it = vec.begin(); it != vec.end(); it++)
 			{
@@ -129,7 +129,7 @@ void vAufgabe_3()
 	vec.push_back(move(std::make_unique<Fahrrad>("Rad1", 20)));
 	vec.push_back(move(std::make_unique<Fahrrad>("Rad2", 25)));
 
-	dGlobaleUhr += 1;
+	dGlobaleZeit += 1;
 
 	std::cout << std::endl;
 
