@@ -7,24 +7,13 @@
 
 #include "Fahrzeug.h"
 
-int Fahrzeug::p_iMaxID = 0;
-
-Fahrzeug::Fahrzeug()
-	: p_sName(""), p_iID(p_iMaxID++), p_dMaxGeschwindigkeit(0), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
-{
-	std::cout << "New Fahrzeug generated: " << p_sName << " - " << p_iID << std::endl;
-
-}
-
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
-	: p_sName(initName), p_iID(p_iMaxID++), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dZeit(0)
+	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0)
 {
-	std::cout << "New Fahrzeug generated: " << p_sName << " - " << p_iID << std::endl;
 }
 
 Fahrzeug::~Fahrzeug()
 {
-	std::cout << "Fahrzeug deleted: " << p_sName << " - " << p_iID << std::endl;
 }
 
 void Fahrzeug::vKopf()
@@ -60,9 +49,8 @@ void Fahrzeug::vAusgeben(std::ostream& out) const
 	auto oldWidth = out.width();
 	auto oldPrec = out.precision();
 
-	out << std::setw(2) << p_iID;
-	out << std::setw(1) << ' ';
-	out << std::setw(5) << std::setiosflags(std::ios::left) << p_sName << std::resetiosflags(std::ios::left);
+	Simulationsobjekt::vAusgeben(out);
+
 	out << std::setw(1) << ' ';
 	out << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
 	out << std::setw(1) << ' ';
@@ -108,10 +96,4 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug& oprnd)
 	p_sName = oprnd.p_sName;
 	p_dMaxGeschwindigkeit = oprnd.p_dMaxGeschwindigkeit;
 	return *this;
-}
-
-std::ostream& operator<<(std::ostream& out, const Fahrzeug& inst)
-{
-	inst.vAusgeben(out);
-	return out;
 }

@@ -11,19 +11,20 @@
 #include <iomanip>
 #include <limits>
 
+#include "Simulationsobjekt.h"
+
 extern double dGlobaleZeit;
 
-class Fahrzeug {
+class Fahrzeug : public Simulationsobjekt {
 public:
-	Fahrzeug();
-	Fahrzeug(std::string initName, double initMaxVelo = 0);
+	Fahrzeug(std::string initName = "", double initMaxVelo = 0);
 	Fahrzeug(const Fahrzeug&) = delete;
 	virtual ~Fahrzeug();
 
 	static void vKopf();
-	virtual void vAusgeben(std::ostream& out) const;
+	virtual void vAusgeben(std::ostream& out) const override;
 
-	virtual void vSimulieren();
+	virtual void vSimulieren() override;
 
 	virtual double dTanken(double dMenge = std::numeric_limits<double>::infinity());
 
@@ -36,15 +37,9 @@ public:
 
 protected:
 	double p_dMaxGeschwindigkeit;
-	double p_dZeit;
 	double p_dGesamtStrecke;
 	double p_dGesamtZeit;
 
 private:
-	std::string p_sName;
-	const int p_iID;
-	static int p_iMaxID;
 
 };
-
-std::ostream& operator<<(std::ostream& out, const Fahrzeug& inst);

@@ -131,11 +131,13 @@
     <ClCompile Include="Fahrzeug.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PKW.cpp" />
+    <ClCompile Include="Simulationsobjekt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
     <ClInclude Include="PKW.h" />
+    <ClInclude Include="Simulationsobjekt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
