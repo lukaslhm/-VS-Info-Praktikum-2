@@ -7,7 +7,7 @@
 class Simulationsobjekt
 {
 public:
-	Simulationsobjekt(std::string initName);
+	Simulationsobjekt(std::string initName = "");
 	Simulationsobjekt(const Simulationsobjekt&) = delete;
 	virtual ~Simulationsobjekt();
 
