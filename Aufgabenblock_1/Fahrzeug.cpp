@@ -66,9 +66,9 @@ void Fahrzeug::vAusgeben(std::ostream& out) const
 	out << std::setw(1) << ' ';
 	out << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
 	out << std::setw(1) << ' ';
-	out << std::setw(13) << p_dGesamtStrecke << std::resetiosflags(std::ios::fixed);
+	out << std::setw(13) << p_dGesamtStrecke;
 	out << std::setw(1) << ' ';
-	out << std::setw(15) << dGeschwindigkeit();
+	out << std::setw(15) << dGeschwindigkeit() << std::resetiosflags(std::ios::fixed);
 
 	out << std::setw(oldWidth) << std::setprecision(oldPrec);
 }
