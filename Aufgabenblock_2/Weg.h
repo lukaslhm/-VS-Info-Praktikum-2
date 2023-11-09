@@ -2,6 +2,7 @@
 
 #include <list>
 #include <string>
+#include <iostream>
 
 #include "Simulationsobjekt.h"
 #include "Tempolimit.h"
@@ -11,9 +12,14 @@ class Fahrzeug;
 class Weg : public Simulationsobjekt
 {
 public:
-	Weg();
-	Weg(std::string initName, double initLaenge);
+	Weg() = default;
+	Weg(std::string initName, double initLaenge, Tempolimit initTempolimit = Tempolimit::Autobahn);
 	~Weg();
+
+	static void vKopf();
+
+	void vSimulieren() override;
+	void vAusgeben(std::ostream& out) const override;
 
 	double getTempolimit();
 

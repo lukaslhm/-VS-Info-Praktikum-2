@@ -25,7 +25,7 @@ void Fahrzeug::vKopf()
 
 	std::cout << std::setw(2) << "ID";
 	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(5) << "Name";
+	std::cout << std::setw(10) << "Name";
 	std::cout << std::setw(1) << ' ';
 	std::cout << std::setw(18) << "MaxGeschwindigkeit";
 	std::cout << std::setw(1) << ' ';
