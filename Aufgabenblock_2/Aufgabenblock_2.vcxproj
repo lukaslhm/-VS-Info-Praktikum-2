@@ -132,14 +132,17 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PKW.cpp" />
     <ClCompile Include="Simulationsobjekt.cpp" />
+    <ClCompile Include="Verhalten.cpp" />
     <ClCompile Include="Weg.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AusgabeKonstanten.h" />
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
     <ClInclude Include="PKW.h" />
     <ClInclude Include="Simulationsobjekt.h" />
     <ClInclude Include="Tempolimit.h" />
+    <ClInclude Include="Verhalten.h" />
     <ClInclude Include="Weg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

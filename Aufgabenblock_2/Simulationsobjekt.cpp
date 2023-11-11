@@ -1,4 +1,6 @@
 #include "Simulationsobjekt.h"
+#include "AusgabeKonstanten.h"
+
 int Simulationsobjekt::p_iMaxID = 0;
 
 Simulationsobjekt::Simulationsobjekt(std::string initName)
@@ -17,9 +19,9 @@ void Simulationsobjekt::vAusgeben(std::ostream& out) const
 	auto oldWidth = out.width();
 	auto oldPrec = out.precision();
 
-	out << std::setw(3) << p_iID;
-	out << std::setw(1) << ' ';
-	out << std::setw(10) << std::setiosflags(std::ios::left) << p_sName << std::resetiosflags(std::ios::left);
+	out << std::setw(ID_WIDTH) << p_iID;
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(NAME_WIDTH) << std::setiosflags(std::ios::left) << p_sName << std::resetiosflags(std::ios::left);
 	
 	out << std::setw(oldWidth) << std::setprecision(oldPrec);
 }

@@ -6,6 +6,7 @@
  */
 
 #include "Fahrzeug.h"
+#include "AusgabeKonstanten.h"
 
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
 	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0)
@@ -23,21 +24,21 @@ void Fahrzeug::vKopf()
 
 	std::cout << std::setiosflags(std::ios::left);
 
-	std::cout << std::setw(2) << "ID";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(10) << "Name";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(18) << "MaxGeschwindigkeit";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(13) << "GesamtStrecke";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(15) << "Geschwindigkeit";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(15) << "GesamtVerbrauch";
-	std::cout << std::setw(1) << ' ';
-	std::cout << std::setw(10) << "Tankinhalt";
+	std::cout << std::setw(ID_WIDTH) << "ID";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(NAME_WIDTH) << "Name";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(MAX_VELO_WIDTH) << "MaxGeschwindigkeit";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(GESAMTSTRECKE_WIDTH) << "GesamtStrecke";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(GESCHWINDIGKEIT_WIDTH) << "Geschwindigkeit";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(GESAMTVERBRAUCH_WIDTH) << "GesamtVerbrauch";
+	std::cout << std::setw(SEPERATOR_WIDTH) << ' ';
+	std::cout << std::setw(TANKINHALT_WIDTH) << "Tankinhalt";
 	std::cout << std::endl;
-	std::cout << std::setfill('-') << std::setw(41 + 27 + 16) << '-';
+	std::cout << std::setfill('-') << std::setw(FAHRZEUG_WIDTH) << '-';
 	std::cout << std::endl;
 
 	std::cout << std::resetiosflags(std::ios::left);
@@ -51,12 +52,12 @@ void Fahrzeug::vAusgeben(std::ostream& out) const
 
 	Simulationsobjekt::vAusgeben(out);
 
-	out << std::setw(1) << ' ';
-	out << std::setw(18) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
-	out << std::setw(1) << ' ';
-	out << std::setw(13) << p_dGesamtStrecke;
-	out << std::setw(1) << ' ';
-	out << std::setw(15) << dGeschwindigkeit() << std::resetiosflags(std::ios::fixed);
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(MAX_VELO_WIDTH) << std::setprecision(2) << std::setiosflags(std::ios::fixed) << p_dMaxGeschwindigkeit;
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(GESAMTSTRECKE_WIDTH) << p_dGesamtStrecke;
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(GESCHWINDIGKEIT_WIDTH) << dGeschwindigkeit() << std::resetiosflags(std::ios::fixed);
 
 	out << std::setw(oldWidth) << std::setprecision(oldPrec);
 }

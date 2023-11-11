@@ -1,4 +1,5 @@
 #include "PKW.h"
+#include "AusgabeKonstanten.h"
 
 PKW::PKW(std::string initName, double initMaxVelo, double initVerbrauch, double initTankvolumen)
 	: Fahrzeug(initName, initMaxVelo), p_dVerbrauch(initVerbrauch), p_dTankvolumen(initTankvolumen), p_dTankinhalt(p_dTankvolumen/2)
@@ -43,8 +44,8 @@ void PKW::vSimulieren()
 void PKW::vAusgeben(std::ostream& out) const
 {
 	Fahrzeug::vAusgeben(out);
-	out << std::setw(1) << ' ';
-	out << std::setw(15) << p_dGesamtStrecke * p_dVerbrauch / 100;
-	out << std::setw(1) << ' ';
-	out << std::setw(10) << p_dTankinhalt;
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(GESAMTVERBRAUCH_WIDTH) << p_dGesamtStrecke * p_dVerbrauch / 100;
+	out << std::setw(SEPERATOR_WIDTH) << ' ';
+	out << std::setw(TANKINHALT_WIDTH) << p_dTankinhalt;
 }
