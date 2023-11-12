@@ -7,9 +7,11 @@
 
 #include "Fahrzeug.h"
 #include "AusgabeKonstanten.h"
+#include "Verhalten.h"
+#include "Weg.h"
 
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
-	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0)
+	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dAbschnittStrecke(0), p_pVerhalten(std::make_unique<Verhalten>())
 {
 }
 
@@ -81,9 +83,19 @@ double Fahrzeug::dGeschwindigkeit() const
 	return p_dMaxGeschwindigkeit;
 }
 
+void Fahrzeug::vNeueStrecke(Weg& neuerWeg)
+{
+	p_pVerhalten = std::make_unique<Verhalten>(neuerWeg);
+}
+
 double Fahrzeug::getGesamtStrecke() const
 {
 	return p_dGesamtStrecke;
+}
+
+double Fahrzeug::getAbschnittStrecke() const
+{
+	return p_dAbschnittStrecke;
 }
 
 bool Fahrzeug::operator<(const Fahrzeug& oprnd)

@@ -10,10 +10,13 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include <memory>
 
 #include "Simulationsobjekt.h"
 
 extern double dGlobaleZeit;
+
+class Weg;
 
 class Fahrzeug : public Simulationsobjekt {
 public:
@@ -30,7 +33,10 @@ public:
 
 	virtual double dGeschwindigkeit() const;
 
+	void vNeueStrecke(Weg& neuerWeg);
+
 	double getGesamtStrecke() const;
+	double getAbschnittStrecke() const;
 
 	bool operator<(const Fahrzeug& oprnd);
 	Fahrzeug& operator=(const Fahrzeug& oprnd);
@@ -41,5 +47,7 @@ protected:
 	double p_dGesamtZeit;
 
 private:
+	double p_dAbschnittStrecke;
+	std::unique_ptr<Verhalten> p_pVerhalten;
 
 };

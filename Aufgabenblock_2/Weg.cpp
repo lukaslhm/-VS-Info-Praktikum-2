@@ -64,7 +64,12 @@ void Weg::vAusgeben(std::ostream& out) const
 	out << std::setw(oldWidth) << std::setprecision(oldPrec);
 }
 
-double Weg::getTempolimit()
+double Weg::getLaenge() const
+{
+	return p_dLaenge;
+}
+
+double Weg::getTempolimit() const
 {
 	return (double) p_eTempolimit;
 }

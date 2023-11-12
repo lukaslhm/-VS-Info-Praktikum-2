@@ -21,7 +21,8 @@ public:
 	void vSimulieren() override;
 	void vAusgeben(std::ostream& out) const override;
 
-	double getTempolimit();
+	double getTempolimit() const;
+	double getLaenge() const;
 
 private:
 	double p_dLaenge;
