@@ -17,6 +17,7 @@
 extern double dGlobaleZeit;
 
 class Weg;
+class Verhalten;
 
 class Fahrzeug : public Simulationsobjekt {
 public:
