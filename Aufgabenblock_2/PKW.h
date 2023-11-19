@@ -11,6 +11,7 @@ public:
 	~PKW();
 
 	double dTanken(double dMenge = std::numeric_limits<double>::infinity()) override;
+	double dGeschwindigkeit() const override;
 
 	void vSimulieren() override;
 

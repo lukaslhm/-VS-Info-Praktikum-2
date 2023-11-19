@@ -83,8 +83,33 @@ void vAufgabe_5()
 	}
 }
 
+void vAufgabe_6()
+{
+	Weg tempWeg("Straﬂe 1", 100, Tempolimit::Innerorts);
+
+	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 1", 50, 9), 3);
+	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 2", 100, 10));
+	tempWeg.vAnnahme(std::make_unique<Fahrrad>("Fahrrad 1", 30));
+
+	double dt = 0.25;
+
+	for (double t = 0; t < 5 * (1 + std::numeric_limits<double>::epsilon()); t += dt)
+	{
+		std::cout << "GlobaleZeit: " << dGlobaleZeit << std::endl;
+		tempWeg.vSimulieren();
+
+		Weg::vKopf();
+		std::cout << tempWeg << std::endl;
+		std::cout << std::endl;
+		tempWeg.vFahrzeugeAusgeben();
+		std::cout << std::endl << std::endl;
+
+		dGlobaleZeit += dt;
+	}
+}
+
 int main()
 {
-	vAufgabe_5();
+	vAufgabe_6();
 	return 0;
 }

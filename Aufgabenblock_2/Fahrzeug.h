@@ -47,9 +47,9 @@ protected:
 	double p_dMaxGeschwindigkeit;
 	double p_dGesamtStrecke;
 	double p_dGesamtZeit;
+	std::unique_ptr<Verhalten> p_pVerhalten;
 
 private:
 	double p_dAbschnittStrecke;
-	std::unique_ptr<Verhalten> p_pVerhalten;
 
 };

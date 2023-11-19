@@ -13,6 +13,8 @@ public:
 
 	virtual double dStrecke(Fahrzeug& aFzg, double dZeitIntervall) = 0;
 
+	double getWegTempolimit() const;
+
 protected:
 	Weg& p_pWeg;
 };

@@ -1,4 +1,5 @@
 #include "PKW.h"
+#include "Verhalten.h"
 #include "AusgabeKonstanten.h"
 
 PKW::PKW(std::string initName, double initMaxVelo, double initVerbrauch, double initTankvolumen)
@@ -23,6 +24,12 @@ double PKW::dTanken(double dMenge)
 	p_dTankinhalt += dMenge;
 
 	return dMenge;
+}
+
+double PKW::dGeschwindigkeit() const
+{
+	if (p_dMaxGeschwindigkeit < p_pVerhalten->getWegTempolimit()) return Fahrzeug::dGeschwindigkeit();
+	else return p_pVerhalten->getWegTempolimit();
 }
 
 void PKW::vSimulieren()

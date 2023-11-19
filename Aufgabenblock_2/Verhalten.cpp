@@ -22,3 +22,8 @@ double Verhalten::dStrecke(Fahrzeug& aFzg, double dZeitIntervall)
 		return p_pWeg.getLaenge() - aFzg.getAbschnittStrecke();
 	}
 }
+
+double Verhalten::getWegTempolimit() const
+{
+	return p_pWeg.getTempolimit();
+}
