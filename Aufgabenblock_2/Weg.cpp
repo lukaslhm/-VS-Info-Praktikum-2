@@ -1,6 +1,7 @@
 #include "Weg.h"
 #include "Fahrzeug.h"
 #include "AusgabeKonstanten.h"
+#include "Fahrausnahme.h"
 
 Weg::Weg(std::string initName, double initLaenge, Tempolimit initTempolimit)
 	: Simulationsobjekt(initName), p_dLaenge(initLaenge), p_eTempolimit(initTempolimit)
@@ -37,7 +38,14 @@ void Weg::vSimulieren()
 {
 	for (auto& it : p_pFahrzeuge)
 	{
-		it->vSimulieren();
+		try
+		{
+			it->vSimulieren();
+		}
+		catch (Fahrausnahme& ex)
+		{
+			ex.vBearbeiten();
+		}
 	}
 }
 

@@ -13,7 +13,7 @@ public:
 
 	virtual double dStrecke(Fahrzeug& aFzg, double dZeitIntervall) = 0;
 
-private:
+protected:
 	Weg& p_pWeg;
 };
 

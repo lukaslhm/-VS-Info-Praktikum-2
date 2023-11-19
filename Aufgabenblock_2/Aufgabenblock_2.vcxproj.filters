@@ -42,6 +42,15 @@
     <ClCompile Include="Parken.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Fahrausnahme.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Losfahren.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Streckenende.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fahrrad.h">
@@ -72,6 +81,15 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Parken.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Fahrausnahme.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Losfahren.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Streckenende.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
