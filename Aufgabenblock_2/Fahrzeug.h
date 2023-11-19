@@ -35,6 +35,7 @@ public:
 	virtual double dGeschwindigkeit() const;
 
 	void vNeueStrecke(Weg& neuerWeg);
+	void vNeueStrecke(Weg& neuerWeg, double StartZeit);
 
 	double getGesamtStrecke() const;
 	double getAbschnittStrecke() const;

@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fahren.cpp" />
     <ClCompile Include="Fahrrad.cpp" />
     <ClCompile Include="Fahrzeug.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parken.cpp" />
     <ClCompile Include="PKW.cpp" />
     <ClCompile Include="Simulationsobjekt.cpp" />
     <ClCompile Include="Verhalten.cpp" />
@@ -137,8 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AusgabeKonstanten.h" />
+    <ClInclude Include="Fahren.h" />
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
+    <ClInclude Include="Parken.h" />
     <ClInclude Include="PKW.h" />
     <ClInclude Include="Simulationsobjekt.h" />
     <ClInclude Include="Tempolimit.h" />

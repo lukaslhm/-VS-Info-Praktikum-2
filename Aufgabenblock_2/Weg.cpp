@@ -79,6 +79,12 @@ void Weg::vAnnahme(std::unique_ptr<Fahrzeug> fzg)
 	p_pFahrzeuge.push_back(move(fzg));
 }
 
+void Weg::vAnnahme(std::unique_ptr<Fahrzeug> fzg, double StartZeit)
+{
+	fzg->vNeueStrecke(*this, StartZeit);
+	p_pFahrzeuge.push_front(move(fzg));
+}
+
 double Weg::getLaenge() const
 {
 	return p_dLaenge;

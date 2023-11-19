@@ -1,6 +1,6 @@
 #include "Verhalten.h"
-#include "Fahrzeug.h"
 #include "Weg.h"
+#include "Fahrzeug.h"
 
 Verhalten::Verhalten(Weg& initWeg)
 	: p_pWeg(initWeg)

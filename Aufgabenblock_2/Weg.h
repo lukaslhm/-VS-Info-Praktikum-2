@@ -23,6 +23,7 @@ public:
 	void vFahrzeugeAusgeben() const;
 
 	void vAnnahme(std::unique_ptr<Fahrzeug> fzg);
+	void vAnnahme(std::unique_ptr<Fahrzeug> fzg, double StartZeit);
 
 	double getTempolimit() const;
 	double getLaenge() const;
