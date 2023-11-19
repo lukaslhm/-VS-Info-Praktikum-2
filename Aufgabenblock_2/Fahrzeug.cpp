@@ -76,8 +76,6 @@ void Fahrzeug::vSimulieren()
 	double tempStrecke = p_pVerhalten->dStrecke(*this, dt);
 	p_dGesamtStrecke += tempStrecke;
 	p_dAbschnittStrecke += tempStrecke;
-
-	if (abs(tempStrecke) < 3 * std::numeric_limits<double>::min()) { std::cout << "(" << p_sName << ", " << p_iID << ") Wegende erreicht" << std::endl; }
 }
 
 double Fahrzeug::dTanken(double dMenge)

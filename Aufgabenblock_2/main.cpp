@@ -63,7 +63,7 @@ void vAufgabe_5()
 	Weg tempWeg("Straﬂe 1", 100);
 
 	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 1", 50, 9));
-	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 2", 100, 10));
+	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 2", 100, 10), 3);
 	tempWeg.vAnnahme(std::make_unique<Fahrrad>("Fahrrad 1", 30));
 
 	double dt = 0.25;
