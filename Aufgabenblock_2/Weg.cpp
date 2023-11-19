@@ -55,13 +55,28 @@ void Weg::vAusgeben(std::ostream& out) const
 	int fahrzeugAmount = p_pFahrzeuge.size();
 	for (auto& it : p_pFahrzeuge)
 	{
-		out << std::setw(NAME_WIDTH) << it->getName();
+		out << it->getName();
 		if (--fahrzeugAmount > 0)
 			out << std::setw(2) << ", ";
 	}
 	out << std::setw(1) << ')';
 
 	out << std::setw(oldWidth) << std::setprecision(oldPrec);
+}
+
+void Weg::vFahrzeugeAusgeben() const
+{
+	Fahrzeug::vKopf();
+	for (auto it = p_pFahrzeuge.begin(); it != p_pFahrzeuge.end(); it++)
+	{
+		std::cout << *it->get() << std::endl;
+	}
+}
+
+void Weg::vAnnahme(std::unique_ptr<Fahrzeug> fzg)
+{
+	fzg->vNeueStrecke(*this);
+	p_pFahrzeuge.push_back(move(fzg));
 }
 
 double Weg::getLaenge() const

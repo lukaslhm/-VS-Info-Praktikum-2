@@ -58,8 +58,33 @@ void vAufgabe_4()
 	std::cout << p << std::endl;
 }
 
+void vAufgabe_5()
+{
+	Weg tempWeg("Straße 1", 100);
+
+	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 1", 50, 9));
+	tempWeg.vAnnahme(std::make_unique<PKW>("PKW 2", 100, 10));
+	tempWeg.vAnnahme(std::make_unique<Fahrrad>("Fahrrad 1", 30));
+
+	double dt = 0.25;
+
+	for (double t = 0; t < 5 * (1 + std::numeric_limits<double>::epsilon()); t += dt)
+	{
+		tempWeg.vSimulieren();
+		
+		std::cout << "GlobaleZeit: " << dGlobaleZeit << std::endl;
+		Weg::vKopf();
+		std::cout << tempWeg << std::endl;
+		std::cout << std::endl;
+		tempWeg.vFahrzeugeAusgeben();
+		std::cout << std::endl << std::endl;
+		
+		dGlobaleZeit += dt;
+	}
+}
+
 int main()
 {
-	vAufgabe_4();
+	vAufgabe_5();
 	return 0;
 }

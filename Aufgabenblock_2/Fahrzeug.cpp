@@ -11,7 +11,7 @@
 #include "Weg.h"
 
 Fahrzeug::Fahrzeug(std::string initName, double initMaxVelo)
-	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dAbschnittStrecke(0), p_pVerhalten(std::make_unique<Verhalten>())
+	: Simulationsobjekt(initName), p_dMaxGeschwindigkeit(initMaxVelo), p_dGesamtStrecke(0), p_dGesamtZeit(0), p_dAbschnittStrecke(0)
 {
 }
 
@@ -67,7 +67,7 @@ void Fahrzeug::vAusgeben(std::ostream& out) const
 void Fahrzeug::vSimulieren()
 {
 	double dt = dGlobaleZeit - p_dZeit;
-	if (abs(dt) < 3 * std::numeric_limits<double>::min()) { std::cout << "Fahrzeug doppelt simuliert: (" << p_sName << ', ' << p_iID << ')' << std::endl; return; }
+	if (abs(dt) < 3 * std::numeric_limits<double>::min()) { std::cout << "Fahrzeug doppelt simuliert: (" << p_sName << ", " << p_iID << ')' << std::endl; return; }
 	p_dZeit = dGlobaleZeit;
 	p_dGesamtZeit += dt;
 
@@ -75,7 +75,7 @@ void Fahrzeug::vSimulieren()
 	p_dGesamtStrecke += tempStrecke;
 	p_dAbschnittStrecke += tempStrecke;
 
-	if (abs(tempStrecke) < 3 * std::numeric_limits<double>::min()) { std::cout << "(" << p_sName << ', ' << p_iID << ") Wegende erreicht"; }
+	if (abs(tempStrecke) < 3 * std::numeric_limits<double>::min()) { std::cout << "(" << p_sName << ", " << p_iID << ") Wegende erreicht" << std::endl; }
 }
 
 double Fahrzeug::dTanken(double dMenge)
@@ -90,6 +90,7 @@ double Fahrzeug::dGeschwindigkeit() const
 
 void Fahrzeug::vNeueStrecke(Weg& neuerWeg)
 {
+	p_pVerhalten.release();
 	p_pVerhalten = std::make_unique<Verhalten>(neuerWeg);
 	p_dAbschnittStrecke = 0;
 }

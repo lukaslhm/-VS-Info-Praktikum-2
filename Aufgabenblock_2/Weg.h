@@ -20,6 +20,9 @@ public:
 
 	void vSimulieren() override;
 	void vAusgeben(std::ostream& out) const override;
+	void vFahrzeugeAusgeben() const;
+
+	void vAnnahme(std::unique_ptr<Fahrzeug> fzg);
 
 	double getTempolimit() const;
 	double getLaenge() const;
