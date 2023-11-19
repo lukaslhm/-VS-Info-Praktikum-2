@@ -70,7 +70,12 @@ void Fahrzeug::vSimulieren()
 	if (abs(dt) < 3 * std::numeric_limits<double>::min()) { std::cout << "Fahrzeug doppelt simuliert: (" << p_sName << ', ' << p_iID << ')' << std::endl; return; }
 	p_dZeit = dGlobaleZeit;
 	p_dGesamtZeit += dt;
-	p_dGesamtStrecke += dGeschwindigkeit() * dt;
+
+	double tempStrecke = p_pVerhalten->dStrecke(*this, dt);
+	p_dGesamtStrecke += tempStrecke;
+	p_dAbschnittStrecke += tempStrecke;
+
+	if (abs(tempStrecke) < 3 * std::numeric_limits<double>::min()) { std::cout << "(" << p_sName << ', ' << p_iID << ") Wegende erreicht"; }
 }
 
 double Fahrzeug::dTanken(double dMenge)
@@ -86,6 +91,7 @@ double Fahrzeug::dGeschwindigkeit() const
 void Fahrzeug::vNeueStrecke(Weg& neuerWeg)
 {
 	p_pVerhalten = std::make_unique<Verhalten>(neuerWeg);
+	p_dAbschnittStrecke = 0;
 }
 
 double Fahrzeug::getGesamtStrecke() const
